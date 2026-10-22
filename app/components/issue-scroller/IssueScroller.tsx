@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,7 +38,12 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
       // re-pin whenever it changes or the start offset goes stale and the strip
       // slides under the header.
       const header = document.querySelector("header");
-      const headerObserver = new ResizeObserver(() => ScrollTrigger.refresh());
+      const syncHeaderHeight = () => {
+        const height = header?.getBoundingClientRect().height ?? 0;
+        scroller.style.setProperty("--header-height", `${height}px`);
+        ScrollTrigger.refresh();
+      };
+      const headerObserver = new ResizeObserver(syncHeaderHeight);
       if (header) headerObserver.observe(header);
       const getDistance = () => scroller.scrollWidth - scroller.clientWidth;
       gsap.to(list, {
@@ -57,6 +62,7 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
 
       return () => {
         headerObserver.disconnect();
+        scroller.style.removeProperty("--header-height");
         scroller.classList.remove(styles.pinned);
         scroller.setAttribute("tabindex", "0");
       };
@@ -72,6 +78,11 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
       className={styles.scroller}
       aria-label={label}
       tabIndex={0}
+      style={
+        {
+          "--spread-ratio": spreads[0] && spreads[0].width / spreads[0].height,
+        } as CSSProperties
+      }
     >
       <ol ref={listRef} className={styles.list}>
         {spreads.map(({ src, width, height, alt }, index) => (
@@ -81,7 +92,7 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
               width={width}
               height={height}
               alt={alt}
-              sizes="(min-width: 768px) 50vw, 80vw"
+              sizes="100vw"
               loading={index === 0 ? "eager" : "lazy"}
               className={styles.image}
             />

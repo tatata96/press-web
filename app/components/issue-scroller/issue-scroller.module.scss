@@ -1,14 +1,24 @@
-// Horizontal strip of spreads; the first spread is centred and its neighbours
-// peek in at the edges to signal that the strip scrolls. The inline padding is
-// (100vw - spread width) / 2, so it must track the spread width below.
+// Horizontal strip of spreads; each spread is as large as fits the space below
+// the sticky header, like turning to a full page in a printed magazine. --header-height is
+// kept in sync by IssueScroller; the fallback covers the no-JS case.
 .scroller {
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  padding: 24px 10vw;
+  --block-padding: 20px;
+  --available-height: calc(
+    100svh - var(--header-height, 80px) - 2 * var(--block-padding)
+  );
 
-  @media (min-width: 768px) {
-    padding-inline: 25vw;
-  }
+  // Rendered width of a spread: height-limited, or width-limited on portrait
+  // screens. --spread-ratio is set by IssueScroller from the image size.
+  --spread-width: min(
+    100vw - 2 * var(--block-padding),
+    var(--available-height) * var(--spread-ratio, 1.5)
+  );
+
+  overflow-x: auto;
+  // Inline padding centres the first and last spread (+ 2px for the border).
+  padding-block: var(--block-padding);
+  padding-inline: calc((100vw - var(--spread-width) - 2px) / 2);
+  scroll-snap-type: x mandatory;
 
   &:focus-visible {
     outline: 2px solid currentColor;
@@ -24,24 +34,27 @@
 
 .list {
   display: flex;
-  gap: 16px;
+  gap: 30px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+// The item hugs the image so the gap between spreads is exactly the flex gap.
+// The border lives here, not on the image: next/image sets an inline
+// color: transparent, which would make a currentColor border invisible.
 .spread {
-  flex: 0 0 80vw;
-  scroll-snap-align: center;
+  flex: none;
   border: 1px solid currentColor;
-
-  @media (min-width: 768px) {
-    flex-basis: 50vw;
-  }
+  scroll-snap-align: center;
 }
 
+// Auto sizing with max limits keeps the aspect ratio: height-limited on
+// landscape screens, width-limited on portrait ones.
 .image {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
+  max-width: calc(100vw - 2 * var(--block-padding));
+  max-height: var(--available-height);
 }
