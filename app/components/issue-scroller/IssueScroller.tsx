@@ -21,7 +21,7 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
               width={width}
               height={height}
               alt={alt}
-              sizes="(min-width: 768px) 80vw, 90vw"
+              sizes="(min-width: 768px) 50vw, 80vw"
               loading={index === 0 ? "eager" : "lazy"}
               className={styles.image}
             />

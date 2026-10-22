@@ -1,10 +1,14 @@
-// Horizontal strip of spreads; the next spread is partly visible at the right
-// edge to signal that the strip scrolls.
+// Horizontal strip of spreads; the first spread is centred and its neighbours
+// peek in at the edges to signal that the strip scrolls. The inline padding is
+// (100vw - spread width) / 2, so it must track the spread width below.
 .scroller {
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  scroll-padding-inline: 16px;
-  padding: 24px 16px;
+  padding: 24px 10vw;
+
+  @media (min-width: 768px) {
+    padding-inline: 25vw;
+  }
 
   &:focus-visible {
     outline: 2px solid currentColor;
@@ -21,12 +25,12 @@
 }
 
 .spread {
-  flex: 0 0 90vw;
-  scroll-snap-align: start;
+  flex: 0 0 80vw;
+  scroll-snap-align: center;
   border: 1px solid currentColor;
 
   @media (min-width: 768px) {
-    flex-basis: 80vw;
+    flex-basis: 50vw;
   }
 }
 
