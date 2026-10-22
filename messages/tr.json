@@ -17,7 +17,29 @@
     "horizontal": "Yatay",
     "vertical": "Dikey"
   },
-  "AboutPage": { "title": "Hakkında" },
-  "MagazinePage": { "title": "Dergi" },
-  "ShopPage": { "title": "Mağaza" }
+  "AboutPage": {
+    "title": "Hakkında"
+  },
+  "MagazinePage": {
+    "title": "Dergi"
+  },
+  "ShopPage": {
+    "title": "Mağaza"
+  },
+  "NewsletterPage": {
+    "headlineLines": ["Sayılar", "arasında", "haberdar", "kal."],
+    "signupTitle": "Bültenimize kaydol"
+  },
+  "NewsletterForm": {
+    "emailLabel": "E-posta",
+    "emailRequired": "E-posta adresini gir.",
+    "emailInvalid": "Geçerli bir e-posta adresi gir, örneğin ad@ornek.com.",
+    "ageLabel": "Yaş",
+    "ageHelper": "İsteğe bağlı.",
+    "ageInvalid": "Yaşını sıfırdan büyük bir tam sayı olarak gir.",
+    "submit": "Kaydol",
+    "notAvailable": "Kayıt henüz kullanılamıyor. Bilgilerin kaydedilmedi.",
+    "nameLabel": "Ad",
+    "surnameLabel": "Soyad"
+  }
 }

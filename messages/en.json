@@ -17,7 +17,29 @@
     "horizontal": "Horizontal",
     "vertical": "Vertical"
   },
-  "AboutPage": { "title": "About" },
-  "MagazinePage": { "title": "Magazine" },
-  "ShopPage": { "title": "Shop" }
+  "AboutPage": {
+    "title": "About"
+  },
+  "MagazinePage": {
+    "title": "Magazine"
+  },
+  "ShopPage": {
+    "title": "Shop"
+  },
+  "NewsletterPage": {
+    "headlineLines": ["Stay in", "the loop", "between", "issues."],
+    "signupTitle": "Sign up to our newsletter"
+  },
+  "NewsletterForm": {
+    "emailLabel": "Email",
+    "emailRequired": "Enter your email address.",
+    "emailInvalid": "Enter a valid email address, like name@example.com.",
+    "ageLabel": "Age",
+    "ageHelper": "Optional.",
+    "ageInvalid": "Enter your age as a whole number greater than zero.",
+    "submit": "Sign up",
+    "notAvailable": "Registration is not available yet. Your details have not been saved.",
+    "nameLabel": "Name",
+    "surnameLabel": "Surname"
+  }
 }
