@@ -1,14 +1,18 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { Spread } from "./spreads";
 import styles from "./issue-scroller.module.scss";
 
+type Layout = "horizontal" | "vertical";
+
 type IssueScrollerProps = {
   label: string;
+  layoutLabel: string;
+  layoutOptions: Record<Layout, string>;
   spreads: readonly (Spread & { alt: string })[];
 };
 
@@ -16,17 +20,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Text comes in as props: resolving translations inside this component makes
 // Next.js flag the route as reading runtime data outside <Suspense>.
-export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
+export default function IssueScroller({
+  label,
+  layoutLabel,
+  layoutOptions,
+  spreads,
+}: IssueScrollerProps) {
+  const [layout, setLayout] = useState<Layout>("horizontal");
   const scrollerRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLOListElement>(null);
 
-  // Vertical page scroll drives the strip sideways: the section is pinned and
-  // the list is translated until the last spread is reached. Without JS, or
-  // with reduced motion, the strip stays natively scrollable.
+  // In horizontal layout, vertical page scroll drives the strip sideways: the
+  // section is pinned and the list is translated until the last spread is
+  // reached. Without JS, or with reduced motion, the strip stays natively
+  // scrollable. The vertical layout is a plain stack and needs no animation.
   useEffect(() => {
     const scroller = scrollerRef.current;
     const list = listRef.current;
-    if (!scroller || !list) return;
+    if (!scroller || !list || layout === "vertical") return;
 
     const mm = gsap.matchMedia();
     mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -45,7 +56,10 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
       };
       const headerObserver = new ResizeObserver(syncHeaderHeight);
       if (header) headerObserver.observe(header);
-      const getDistance = () => scroller.scrollWidth - scroller.clientWidth;
+      // Measured on the list, not the section: the section's scrollWidth leaves
+      // out its trailing inline padding, so the last spread would stop flush
+      // against the viewport edge instead of centred like the first.
+      const getDistance = () => list.scrollWidth - list.clientWidth;
       gsap.to(list, {
         x: () => -getDistance(),
         ease: "none",
@@ -64,41 +78,63 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
         headerObserver.disconnect();
         scroller.style.removeProperty("--header-height");
         scroller.classList.remove(styles.pinned);
-        scroller.setAttribute("tabindex", "0");
+        // React owns tabindex once the layout has switched away.
+        if (!scroller.classList.contains(styles.vertical)) {
+          scroller.setAttribute("tabindex", "0");
+        }
       };
     });
 
     return () => mm.revert();
-  }, []);
+  }, [layout]);
 
-  // The region is focusable so keyboard users can scroll it with the arrow keys.
+  const isHorizontal = layout === "horizontal";
+
   return (
-    <section
-      ref={scrollerRef}
-      className={styles.scroller}
-      aria-label={label}
-      tabIndex={0}
-      style={
-        {
-          "--spread-ratio": spreads[0] && spreads[0].width / spreads[0].height,
-        } as CSSProperties
-      }
-    >
-      <ol ref={listRef} className={styles.list}>
-        {spreads.map(({ src, width, height, alt }, index) => (
-          <li key={src} className={styles.spread}>
-            <Image
-              src={src}
-              width={width}
-              height={height}
-              alt={alt}
-              sizes="100vw"
-              loading={index === 0 ? "eager" : "lazy"}
-              className={styles.image}
-            />
-          </li>
+    <>
+      <div className={styles.switcher} role="group" aria-label={layoutLabel}>
+        {(Object.keys(layoutOptions) as Layout[]).map((option) => (
+          <button
+            key={option}
+            type="button"
+            className={styles.switcherButton}
+            aria-pressed={layout === option}
+            onClick={() => setLayout(option)}
+          >
+            {layoutOptions[option]}
+          </button>
         ))}
-      </ol>
-    </section>
+      </div>
+      {/* The horizontal strip is focusable so keyboard users can scroll it with
+          the arrow keys. */}
+      <section
+        ref={scrollerRef}
+        className={`${styles.scroller} ${isHorizontal ? "" : styles.vertical}`}
+        aria-label={label}
+        tabIndex={isHorizontal ? 0 : undefined}
+        style={
+          {
+            "--spread-ratio":
+              spreads[0] && spreads[0].width / spreads[0].height,
+          } as CSSProperties
+        }
+      >
+        <ol ref={listRef} className={styles.list}>
+          {spreads.map(({ src, width, height, alt }, index) => (
+            <li key={src} className={styles.spread}>
+              <Image
+                src={src}
+                width={width}
+                height={height}
+                alt={alt}
+                sizes="100vw"
+                loading={index === 0 ? "eager" : "lazy"}
+                className={styles.image}
+              />
+            </li>
+          ))}
+        </ol>
+      </section>
+    </>
   );
 }

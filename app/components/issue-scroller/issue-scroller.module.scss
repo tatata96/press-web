@@ -58,3 +58,46 @@
   max-width: calc(100vw - 2 * var(--block-padding));
   max-height: var(--available-height);
 }
+
+// Spreads stacked top to bottom with normal page scroll.
+.vertical {
+  overflow: visible;
+  padding-inline: var(--block-padding);
+  scroll-snap-type: none;
+
+  .list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    max-height: none;
+  }
+}
+
+.switcher {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 12px var(--block-padding) 0;
+}
+
+.switcherButton {
+  padding: 4px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-transform: lowercase;
+  cursor: pointer;
+
+  &[aria-pressed="true"] {
+    border-bottom-color: currentColor;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}

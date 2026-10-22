@@ -10,6 +10,9 @@
   },
   "IssueScroller": {
     "label": "Sayı sayfaları",
+    "layoutLabel": "Okuma yönü",
+    "layoutHorizontal": "Yatay",
+    "layoutVertical": "Dikey",
     "spreadAlt": "Sayfa {number} / {total}"
   },
   "AboutPage": { "title": "Hakkında" },
