@@ -10,10 +10,12 @@
   },
   "IssueScroller": {
     "label": "Sayı sayfaları",
-    "layoutLabel": "Okuma yönü",
-    "layoutHorizontal": "Yatay",
-    "layoutVertical": "Dikey",
     "spreadAlt": "Sayfa {number} / {total}"
+  },
+  "IssueLayoutSwitcher": {
+    "label": "Okuma yönü",
+    "horizontal": "Yatay",
+    "vertical": "Dikey"
   },
   "AboutPage": { "title": "Hakkında" },
   "MagazinePage": { "title": "Dergi" },

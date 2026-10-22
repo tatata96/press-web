@@ -1,0 +1,24 @@
+.switcher {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  padding: 4px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-transform: lowercase;
+  cursor: pointer;
+
+  &[aria-pressed="true"] {
+    border-bottom-color: currentColor;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}

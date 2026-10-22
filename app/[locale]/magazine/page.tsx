@@ -19,15 +19,7 @@ export default async function MagazinePage({
 
   return (
     <main>
-      <IssueScroller
-        label={tScroller("label")}
-        layoutLabel={tScroller("layoutLabel")}
-        layoutOptions={{
-          horizontal: tScroller("layoutHorizontal"),
-          vertical: tScroller("layoutVertical"),
-        }}
-        spreads={spreads}
-      />
+      <IssueScroller label={tScroller("label")} spreads={spreads} />
     </main>
   );
 }

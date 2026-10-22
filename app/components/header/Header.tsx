@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import IssueLayoutSwitcher from "../issue-scroller/IssueLayoutSwitcher";
 import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
 import styles from "./header.module.scss";
 
@@ -17,6 +18,7 @@ export default async function Header() {
     <header className={styles.header}>
       <div className={styles.language}>
         <LanguageSwitcher />
+        <IssueLayoutSwitcher />
       </div>
       <Link href="/" className={`${styles.logo} type-display`}>
         Press

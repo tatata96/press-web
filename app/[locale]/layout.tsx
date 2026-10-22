@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { IssueLayoutProvider } from "../components/issue-scroller/IssueLayoutProvider";
 import Header from "../components/header/Header";
 
 const pressed = localFont({
@@ -60,8 +61,10 @@ export default async function RootLayout({
     >
       <body>
         <NextIntlClientProvider>
-          <Header />
-          {children}
+          <IssueLayoutProvider>
+            <Header />
+            {children}
+          </IssueLayoutProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -2,7 +2,12 @@
 // the sticky header, like turning to a full page in a printed magazine. --header-height is
 // kept in sync by IssueScroller; the fallback covers the no-JS case.
 .scroller {
-  --block-padding: 20px;
+  --block-padding: 8px;
+
+  @media (min-width: 768px) {
+    --block-padding: 20px;
+  }
+
   --available-height: calc(
     100svh - var(--header-height, 80px) - 2 * var(--block-padding)
   );
@@ -34,7 +39,11 @@
 
 .list {
   display: flex;
-  gap: 30px;
+  gap: 12px;
+
+  @media (min-width: 768px) {
+    gap: 30px;
+  }
   margin: 0;
   padding: 0;
   list-style: none;
@@ -72,32 +81,5 @@
 
   .image {
     max-height: none;
-  }
-}
-
-.switcher {
-  display: flex;
-  justify-content: flex-start;
-  gap: 16px;
-  padding: 12px var(--block-padding) 0;
-}
-
-.switcherButton {
-  padding: 4px;
-  border: 0;
-  border-bottom: 1px solid transparent;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-transform: lowercase;
-  cursor: pointer;
-
-  &[aria-pressed="true"] {
-    border-bottom-color: currentColor;
-  }
-
-  &:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
   }
 }

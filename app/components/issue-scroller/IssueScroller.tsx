@@ -1,18 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useIssueLayout } from "./IssueLayoutProvider";
 import type { Spread } from "./spreads";
 import styles from "./issue-scroller.module.scss";
 
-type Layout = "horizontal" | "vertical";
-
 type IssueScrollerProps = {
   label: string;
-  layoutLabel: string;
-  layoutOptions: Record<Layout, string>;
   spreads: readonly (Spread & { alt: string })[];
 };
 
@@ -20,13 +17,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Text comes in as props: resolving translations inside this component makes
 // Next.js flag the route as reading runtime data outside <Suspense>.
-export default function IssueScroller({
-  label,
-  layoutLabel,
-  layoutOptions,
-  spreads,
-}: IssueScrollerProps) {
-  const [layout, setLayout] = useState<Layout>("horizontal");
+export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
+  const { layout } = useIssueLayout();
   const scrollerRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLOListElement>(null);
 
@@ -92,19 +84,6 @@ export default function IssueScroller({
 
   return (
     <>
-      <div className={styles.switcher} role="group" aria-label={layoutLabel}>
-        {(Object.keys(layoutOptions) as Layout[]).map((option) => (
-          <button
-            key={option}
-            type="button"
-            className={styles.switcherButton}
-            aria-pressed={layout === option}
-            onClick={() => setLayout(option)}
-          >
-            {layoutOptions[option]}
-          </button>
-        ))}
-      </div>
       {/* The horizontal strip is focusable so keyboard users can scroll it with
           the arrow keys. */}
       <section

@@ -10,10 +10,12 @@
   },
   "IssueScroller": {
     "label": "Issue spreads",
-    "layoutLabel": "Reading direction",
-    "layoutHorizontal": "Horizontal",
-    "layoutVertical": "Vertical",
     "spreadAlt": "Spread {number} of {total}"
+  },
+  "IssueLayoutSwitcher": {
+    "label": "Reading direction",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical"
   },
   "AboutPage": { "title": "About" },
   "MagazinePage": { "title": "Magazine" },
