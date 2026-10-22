@@ -16,6 +16,12 @@
   }
 }
 
+// Applied while GSAP pins the section and moves the list with page scroll.
+.pinned {
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+
 .list {
   display: flex;
   gap: 16px;

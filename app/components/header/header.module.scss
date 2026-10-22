@@ -1,7 +1,3 @@
-// Tweak these to try different collapse animations.
-$collapse-duration: 650ms;
-$collapse-easing: ease;
-
 .header {
   // Stays pinned while content scrolls; the opaque background keeps it readable.
   position: sticky;
@@ -13,55 +9,18 @@ $collapse-easing: ease;
   align-items: center;
   padding: 24px 16px 16px;
   border-bottom: 1px solid currentColor;
-  transition: padding $collapse-duration $collapse-easing;
-
-  &[data-collapsed="true"] {
-    padding-block: 12px;
-  }
 }
 
-// Animating grid rows 1fr -> 0fr collapses the menu without a fixed height.
-// visibility removes the hidden links from the tab order once collapsed.
 .details {
-  display: grid;
-  grid-template-rows: 1fr;
   margin-top: 16px;
-  transition:
-    grid-template-rows $collapse-duration $collapse-easing,
-    margin-top $collapse-duration $collapse-easing,
-    visibility $collapse-duration;
-
-  .header[data-collapsed="true"] & {
-    grid-template-rows: 0fr;
-    margin-top: 0;
-    visibility: hidden;
-  }
-}
-
-.detailsInner {
-  min-height: 0;
-  overflow: hidden;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .header,
-  .details,
-  .language {
-    transition: none;
-  }
 }
 
 // Pinned to the top right so it stays out of the centered logo and nav;
-// it sits outside the collapsing menu so it is always visible.
+// it is taken out of flow so it does not affect the header height.
 .language {
   position: absolute;
   top: 24px;
   right: 16px;
-  transition: top $collapse-duration $collapse-easing;
-
-  .header[data-collapsed="true"] & {
-    top: 12px;
-  }
 }
 
 .logo {

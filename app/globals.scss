@@ -9,6 +9,9 @@
 
 html {
   height: 100%;
+  // Disables the elastic overscroll at the top and bottom of the page, which
+  // otherwise drags the sticky header and the pinned strip with it.
+  overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
