@@ -1,0 +1,88 @@
+:root {
+  --font-family-title: var(--font-pressed), serif;
+  --font-family-body: var(--font-register), serif;
+  --font-family-ui: var(--font-crit), sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  // Display title
+  --type-display-size: 48px;
+  --type-display-line-height: 1;
+  --type-display-letter-spacing: 0;
+
+  // Title
+  --type-title-size: 32px;
+  --type-title-line-height: 1.1;
+  --type-title-letter-spacing: 0;
+
+  // Body
+  --type-body-size: 16px;
+  --type-body-line-height: 1.5;
+  --type-body-letter-spacing: 0;
+
+  // Label
+  --type-label-size: 14px;
+  --type-label-line-height: 1;
+  --type-label-letter-spacing: 0.08em;
+
+  // Caption
+  --type-caption-size: 12px;
+  --type-caption-line-height: 1.4;
+  --type-caption-letter-spacing: 0.02em;
+
+  @media (min-width: 768px) {
+    --type-display-size: 96px;
+    --type-title-size: 48px;
+    --type-body-size: 18px;
+  }
+}
+
+body {
+  font-family: var(--font-family-body);
+}
+
+.type-display {
+  font-family: var(--font-family-title);
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-line-height);
+  letter-spacing: var(--type-display-letter-spacing);
+}
+
+.type-title {
+  font-family: var(--font-family-title);
+  font-size: var(--type-title-size);
+  line-height: var(--type-title-line-height);
+  letter-spacing: var(--type-title-letter-spacing);
+}
+
+.type-body {
+  font-family: var(--font-family-body);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--type-body-line-height);
+  letter-spacing: var(--type-body-letter-spacing);
+}
+
+.type-body-bold {
+  @extend .type-body;
+  font-weight: var(--font-weight-bold);
+}
+
+.type-label {
+  font-family: var(--font-family-ui);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-label-line-height);
+  letter-spacing: var(--type-label-letter-spacing);
+}
+
+.type-caption {
+  font-family: var(--font-family-ui);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--type-caption-line-height);
+  letter-spacing: var(--type-caption-letter-spacing);
+}
