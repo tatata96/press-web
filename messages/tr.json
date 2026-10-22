@@ -1,0 +1,14 @@
+{
+  "Header": {
+    "navLabel": "Ana menü",
+    "about": "hakkında",
+    "magazine": "dergi",
+    "shop": "mağaza"
+  },
+  "LanguageSwitcher": {
+    "label": "Dil"
+  },
+  "AboutPage": { "title": "Hakkında" },
+  "MagazinePage": { "title": "Dergi" },
+  "ShopPage": { "title": "Mağaza" }
+}

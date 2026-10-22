@@ -1,25 +1,32 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
 import styles from "./header.module.scss";
 
 // Search and bag are in the design but belong to later commerce work.
 const navItems = [
-  { label: "about", href: "/about" },
-  { label: "magazine", href: "/magazine" },
-  { label: "shop", href: "/shop" },
-];
+  { key: "about", href: "/about" },
+  { key: "magazine", href: "/magazine" },
+  { key: "shop", href: "/shop" },
+] as const;
 
-export default function Header() {
+export default async function Header() {
+  const t = await getTranslations("Header");
+
   return (
     <header className={styles.header}>
+      <div className={styles.language}>
+        <LanguageSwitcher />
+      </div>
       <Link href="/" className={`${styles.logo} type-display`}>
         Press
       </Link>
-      <nav aria-label="Main">
+      <nav aria-label={t("navLabel")}>
         <ul className={styles.list}>
-          {navItems.map(({ label, href }) => (
+          {navItems.map(({ key, href }) => (
             <li key={href}>
               <Link href={href} className={`${styles.link} type-label`}>
-                {label}
+                {t(key)}
               </Link>
             </li>
           ))}

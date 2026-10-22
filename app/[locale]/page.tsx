@@ -1,3 +1,5 @@
+import { setRequestLocale } from "next-intl/server";
+
 const samples = [
   {className: "type-display"},
   {className: "type-title"},
@@ -7,7 +9,10 @@ const samples = [
   {className: "type-caption"},
 ];
 
-export default function Home() {
+export default async function Home({ params }: PageProps<"/[locale]">) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main style={{padding: "32px 16px", display: "grid", gap: "32px"}}>
       {samples.map(({className}) => (

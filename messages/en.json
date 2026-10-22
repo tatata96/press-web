@@ -1,0 +1,14 @@
+{
+  "Header": {
+    "navLabel": "Main",
+    "about": "about",
+    "magazine": "magazine",
+    "shop": "shop"
+  },
+  "LanguageSwitcher": {
+    "label": "Language"
+  },
+  "AboutPage": { "title": "About" },
+  "MagazinePage": { "title": "Magazine" },
+  "ShopPage": { "title": "Shop" }
+}
