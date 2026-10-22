@@ -28,10 +28,15 @@
 
 .language {
   grid-area: language;
-  justify-self: start;
+  justify-self: stretch;
   display: flex;
   align-items: center;
-  gap: 16px;
+}
+
+// Auto margins centre the layout switcher in the space between the language
+// links and the logo.
+.layout {
+  margin-inline: auto;
 }
 
 .details {

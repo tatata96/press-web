@@ -18,7 +18,9 @@ export default async function Header() {
     <header className={styles.header}>
       <div className={styles.language}>
         <LanguageSwitcher />
-        <IssueLayoutSwitcher />
+        <div className={styles.layout}>
+          <IssueLayoutSwitcher />
+        </div>
       </div>
       <Link href="/" className={`${styles.logo} type-display`}>
         Press

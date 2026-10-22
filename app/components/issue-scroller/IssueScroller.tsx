@@ -22,6 +22,30 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
   const scrollerRef = useRef<HTMLElement>(null);
   const listRef = useRef<HTMLOListElement>(null);
 
+  // Both layouts size the spreads to the space below the sticky header, and
+  // its height depends on the loaded fonts and the viewport. Re-pin on change
+  // or the start offset goes stale and the strip slides under the header.
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    const header = document.querySelector("header");
+    if (!scroller || !header) return;
+
+    const syncHeaderHeight = () => {
+      scroller.style.setProperty(
+        "--header-height",
+        `${header.getBoundingClientRect().height}px`,
+      );
+      ScrollTrigger.refresh();
+    };
+    const headerObserver = new ResizeObserver(syncHeaderHeight);
+    headerObserver.observe(header);
+
+    return () => {
+      headerObserver.disconnect();
+      scroller.style.removeProperty("--header-height");
+    };
+  }, []);
+
   // In horizontal layout, vertical page scroll drives the strip sideways: the
   // section is pinned and the list is translated until the last spread is
   // reached. Without JS, or with reduced motion, the strip stays natively
@@ -37,17 +61,7 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
       scroller.classList.add(styles.pinned);
       scroller.removeAttribute("tabindex");
 
-      // The header height depends on the loaded fonts and the viewport, so
-      // re-pin whenever it changes or the start offset goes stale and the strip
-      // slides under the header.
       const header = document.querySelector("header");
-      const syncHeaderHeight = () => {
-        const height = header?.getBoundingClientRect().height ?? 0;
-        scroller.style.setProperty("--header-height", `${height}px`);
-        ScrollTrigger.refresh();
-      };
-      const headerObserver = new ResizeObserver(syncHeaderHeight);
-      if (header) headerObserver.observe(header);
       // Measured on the list, not the section: the section's scrollWidth leaves
       // out its trailing inline padding, so the last spread would stop flush
       // against the viewport edge instead of centred like the first.
@@ -67,8 +81,6 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
       });
 
       return () => {
-        headerObserver.disconnect();
-        scroller.style.removeProperty("--header-height");
         scroller.classList.remove(styles.pinned);
         // React owns tabindex once the layout has switched away.
         if (!scroller.classList.contains(styles.vertical)) {

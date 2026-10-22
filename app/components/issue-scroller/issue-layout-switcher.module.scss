@@ -3,22 +3,29 @@
   gap: 8px;
 }
 
+// Outlined pages; the active layout is drawn filled.
 .button {
-  padding: 4px;
+  display: block;
+  padding: 0;
   border: 0;
-  border-bottom: 1px solid transparent;
   background: none;
   color: inherit;
-  font: inherit;
-  text-transform: lowercase;
   cursor: pointer;
 
-  &[aria-pressed="true"] {
-    border-bottom-color: currentColor;
+  svg {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 0.75;
+  }
+
+  &:hover svg,
+  &[aria-pressed="true"] svg {
+    fill: currentColor;
   }
 
   &:focus-visible {
     outline: 2px solid currentColor;
-    outline-offset: 2px;
+    outline-offset: 4px;
   }
 }
