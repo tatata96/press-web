@@ -7,7 +7,6 @@ export default async function MagazinePage({
 }: PageProps<"/[locale]/magazine">) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("MagazinePage");
   const tScroller = await getTranslations("IssueScroller");
 
   const spreads = issueOneSpreads.map((spread, index) => ({
@@ -20,7 +19,6 @@ export default async function MagazinePage({
 
   return (
     <main>
-      <h1 className="type-title">{t("title")}</h1>
       <IssueScroller label={tScroller("label")} spreads={spreads} />
     </main>
   );
