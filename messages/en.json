@@ -8,6 +8,10 @@
   "LanguageSwitcher": {
     "label": "Language"
   },
+  "IssueScroller": {
+    "label": "Issue spreads",
+    "spreadAlt": "Spread {number} of {total}"
+  },
   "AboutPage": { "title": "About" },
   "MagazinePage": { "title": "Magazine" },
   "ShopPage": { "title": "Shop" }

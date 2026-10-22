@@ -8,6 +8,10 @@
   "LanguageSwitcher": {
     "label": "Dil"
   },
+  "IssueScroller": {
+    "label": "Sayı sayfaları",
+    "spreadAlt": "Sayfa {number} / {total}"
+  },
   "AboutPage": { "title": "Hakkında" },
   "MagazinePage": { "title": "Dergi" },
   "ShopPage": { "title": "Mağaza" }
