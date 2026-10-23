@@ -28,7 +28,9 @@
     "title": "Mağaza"
   },
   "NewsletterPage": {
-    "headlineLines": ["Sayılar", "arasında", "haberdar", "kal."],
+    "heading": "Mektup",
+    "lead": "Sayılar arasında haberdar kal.",
+    "body": "Özenle seçilmiş içerikler, haftalık bültenimizle gelen kutunda.",
     "signupTitle": "Bültenimize kaydol"
   },
   "NewsletterForm": {

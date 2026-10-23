@@ -1,65 +1,56 @@
-// Mobile: the headline sits above the form, kept short so the
-// first field stays near the top of the screen. Desktop: headline on the
-// left half, divider, then a small caption at the top of the right half and
-// the form pinned to the bottom. Sizes use vh so the page fits one screen.
+// Follows the About page: stacked sections separated by a rule on mobile;
+// on desktop each section is a two-column spread, with the big title-font
+// heading on the left and copy (then the form) on the right.
 .main {
   flex: 1;
   width: 100%;
-  padding: 24px 16px 32px;
+  padding: 0 16px 64px;
+}
+
+.section {
   display: grid;
   gap: 24px;
-  align-content: start;
-
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(12, 1fr);
-    // The divider sits in the middle of a 120px gutter: 60px gap + 60px padding.
-    column-gap: 60px;
-    padding: 32px 16px;
-    align-content: stretch;
-  }
-}
-
-// Big headline whose lines alternate between the left and right edge.
-.headline {
-  margin: 0;
-  // Only the size differs from the body style.
-  font-size: clamp(40px, 12vw, 64px);
-
-  @media (min-width: 900px) {
-    grid-column: 1 / 7;
-    grid-row: 1;
-    // The vh cap keeps four lines plus the header inside one screen.
-    font-size: clamp(64px, min(8vw, 12vh), 120px);
-  }
-}
-
-.line {
-  display: block;
-
-  &:nth-child(even) {
-    text-align: right;
-  }
-}
-
-.signup {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding-top: 24px;
+  padding: 32px 0 48px;
   border-top: var(--rule-width) solid currentColor;
 
   @media (min-width: 900px) {
-    grid-column: 7 / 13;
-    grid-row: 1;
-    padding: 0 0 0 60px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 60px;
+    padding: 32px 0 80px;
+    align-items: start;
+  }
+
+  // The header's bottom rule already sits above the first section.
+  &:first-child {
     border-top: 0;
-    border-left: var(--rule-width) solid currentColor;
-    justify-content: space-between;
-    gap: 32px;
   }
 }
 
-// Small mono caption, set apart from the display headline.
+.heading {
+  margin: 0;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(48px, 12vw, 96px);
+  line-height: 1;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    font-size: clamp(18px, 1.6vw, 28px);
+  }
+}
+
+// Small mono caption above the form, as used for labels on the About page.
 .signupTitle {
   margin: 0;
   font-family: var(--font-family-mono);

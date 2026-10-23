@@ -8,22 +8,21 @@ export default async function NewsletterPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("NewsletterPage");
-  // The headline is broken into lines so each can be staggered in CSS.
-  const rawLines = t.raw("headlineLines");
-  const headlineLines: string[] = Array.isArray(rawLines)
-    ? rawLines.filter((line): line is string => typeof line === "string")
-    : [];
 
   return (
     <main className={styles.main}>
-      <h1 className={`${styles.headline} type-body`}>
-        {headlineLines.map((line) => (
-          <span key={line} className={styles.line}>
-            {line}
-          </span>
-        ))}
-      </h1>
-      <section className={styles.signup} aria-labelledby="signup-heading">
+      <section className={styles.section} aria-labelledby="newsletter-heading">
+        <h1 id="newsletter-heading" className={styles.heading}>
+          {t("heading")}
+        </h1>
+        <div className={styles.copy}>
+          <p>
+            <strong>{t("lead")}</strong>
+          </p>
+          <p>{t("body")}</p>
+        </div>
+      </section>
+      <section className={styles.section} aria-labelledby="signup-heading">
         <h2 id="signup-heading" className={styles.signupTitle}>
           {t("signupTitle")}
         </h2>

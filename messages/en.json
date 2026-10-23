@@ -81,7 +81,9 @@
     "title": "Shop"
   },
   "NewsletterPage": {
-    "headlineLines": ["Stay in", "the loop", "between", "issues."],
+    "heading": "Letters",
+    "lead": "Stay in the loop between issues.",
+    "body": "Carefully curated selections, sent to your inbox in our weekly newsletter.",
     "signupTitle": "Sign up to our newsletter"
   },
   "NewsletterForm": {
