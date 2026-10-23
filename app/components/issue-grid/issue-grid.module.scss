@@ -24,7 +24,7 @@
 // The border lives on the item: next/image sets an inline color: transparent,
 // which would make a currentColor border invisible.
 .spread {
-  border: 1px solid currentColor;
+  border: var(--rule-width) solid currentColor;
 }
 
 .image {

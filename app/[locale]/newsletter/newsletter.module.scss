@@ -46,14 +46,14 @@
   flex-direction: column;
   gap: 24px;
   padding-top: 24px;
-  border-top: 1px solid currentColor;
+  border-top: var(--rule-width) solid currentColor;
 
   @media (min-width: 900px) {
     grid-column: 7 / 13;
     grid-row: 1;
     padding: 0 0 0 60px;
     border-top: 0;
-    border-left: 1px solid currentColor;
+    border-left: var(--rule-width) solid currentColor;
     justify-content: space-between;
     gap: 32px;
   }

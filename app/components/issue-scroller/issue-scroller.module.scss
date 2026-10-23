@@ -20,9 +20,11 @@
   );
 
   overflow-x: auto;
-  // Inline padding centres the first and last spread (+ 2px for the border).
+  // Inline padding centres the first and last spread (+ both borders).
   padding-block: var(--block-padding);
-  padding-inline: calc((100vw - var(--spread-width) - 2px) / 2);
+  padding-inline: calc(
+    (100vw - var(--spread-width) - 2 * var(--rule-width)) / 2
+  );
   scroll-snap-type: x mandatory;
 
   &:focus-visible {
@@ -54,7 +56,7 @@
 // color: transparent, which would make a currentColor border invisible.
 .spread {
   flex: none;
-  border: 1px solid currentColor;
+  border: var(--rule-width) solid currentColor;
   scroll-snap-align: center;
 }
 
