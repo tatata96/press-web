@@ -9,6 +9,7 @@ const navItems = [
   { key: "about", href: "/about" },
   { key: "magazine", href: "/magazine" },
   { key: "shop", href: "/shop" },
+  { key: "newsletter", href: "/newsletter" },
 ] as const;
 
 export default async function Header() {

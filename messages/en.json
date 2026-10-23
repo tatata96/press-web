@@ -3,7 +3,8 @@
     "navLabel": "Main",
     "about": "about",
     "magazine": "magazine",
-    "shop": "shop"
+    "shop": "shop",
+    "newsletter": "newsletter"
   },
   "LanguageSwitcher": {
     "label": "Language"
