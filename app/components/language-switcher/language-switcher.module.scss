@@ -7,9 +7,10 @@
 }
 
 .link {
-  font-family: var(--font-family-title);
+  font-family: var(--font-family-ui);
+  font-weight: var(--font-weight-regular);
   letter-spacing: 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: inherit;
   text-decoration: none;
 

@@ -1,0 +1,34 @@
+// Single column on small screens; from tablet up spreads pair up and the first
+// one sits centred on its own row at the same width as the others.
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 20px;
+
+    .spread:first-child {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc((100% - 30px) / 2);
+    }
+  }
+}
+
+// The border lives on the item: next/image sets an inline color: transparent,
+// which would make a currentColor border invisible.
+.spread {
+  border: 1px solid currentColor;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}

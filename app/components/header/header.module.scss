@@ -58,12 +58,12 @@
   list-style: none;
 }
 
-// Nav items use the title face, matching the design.
+// Nav items use the Crit UI face, matching the design.
 .link {
-  font-family: var(--font-family-title);
+  font-family: var(--font-family-ui);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0;
-  text-transform: lowercase;
+  text-transform: capitalize;
   color: inherit;
   text-decoration: none;
 

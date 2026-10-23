@@ -58,14 +58,14 @@
   scroll-snap-align: center;
 }
 
-// Auto sizing with max limits keeps the aspect ratio: height-limited on
-// landscape screens, width-limited on portrait ones.
+// Width comes from --spread-width (height-limited on landscape screens,
+// width-limited on portrait ones) instead of the loaded image, so lazy images
+// already take their final space. Otherwise they measure 0px wide at mount and
+// GSAP pins with a stale scroll distance after a client-side navigation.
 .image {
   display: block;
-  width: auto;
+  width: var(--spread-width);
   height: auto;
-  max-width: calc(100vw - 2 * var(--block-padding));
-  max-height: var(--available-height);
 }
 
 // Spreads stacked top to bottom with normal page scroll.
