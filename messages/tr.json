@@ -7,13 +7,9 @@
     "newsletter": "bülten"
   },
   "HomeIntro": {
-    "coverLines": [
-      "GURBET,",
-      "ANKARA",
-      "VE ZAMANSIZ",
-      "BİR SESİN",
-      "PEŞİNDE"
-    ]
+    "coverLines": ["GURBET,", "ANKARA", "VE ZAMANSIZ", "BİR SESİN", "PEŞİNDE"],
+    "new": "Yeni",
+    "coverDescription": "Örnek metin. Kapak hikâyesinin kısa açıklaması burada, iki ya da üç satır olarak yer alır."
   },
   "IssueGrid": {
     "label": "Hikâyeler",

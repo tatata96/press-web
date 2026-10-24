@@ -76,7 +76,10 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
           const distance = getDistance();
           if (distance <= 0) return 0;
           const leadIn = getLeadIn();
-          return Math.max(0, (progress * (distance + leadIn) - leadIn) / distance);
+          return Math.max(
+            0,
+            (progress * (distance + leadIn) - leadIn) / distance,
+          );
         },
         scrollTrigger: {
           trigger: scroller,

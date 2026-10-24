@@ -18,7 +18,12 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   return (
     <main>
       <HomeIntro>
-        <IssueGrid label={t("label")} newLabel={t("new")} articles={articles} />
+        <IssueGrid
+          label={t("label")}
+          newLabel={t("new")}
+          startNumber={2}
+          articles={articles}
+        />
       </HomeIntro>
     </main>
   );

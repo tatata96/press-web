@@ -1,10 +1,8 @@
 .home {
   --opening-height: clamp(260px, 38vw, 70svh);
-  --cover-width: clamp(115px, 20.5vw, 294px);
-  // Final size is about 32% of the viewport width.
-  --cover-final-scale: 1.56;
-  // Cover height / width: the image (1.358) plus the headline below it.
-  --cover-ratio: 2.13;
+  --cover-width: clamp(138px, 24.6vw, 353px);
+  // Cover height / width: the image (1.358) plus the meta row above it and the headline and description below.
+  --cover-ratio: 2.45;
   // Header height plus a gap; pinned cover sits just below the header.
   --cover-pin-top: 104px;
   isolation: isolate;
@@ -37,19 +35,12 @@
 
 // The stage pulls the cover up over the lower part of the masthead. The cover
 // (above the masthead via z-index) pins just under the header while the stage
-// scrolls on, then is released above the content. The stage is tall enough for
-// the cover's final scaled size plus a short pause while pinned. The bottom
-// padding reserves the room the scaled cover grows into, so it never overlaps
-// the content below.
+// scrolls on, then is released above the content. The stage is the cover's
+// height plus a short pause while pinned.
 .stage {
   position: relative;
   margin-top: calc(var(--opening-height) * -0.4);
-  padding-bottom: calc(
-    var(--cover-width) * (var(--cover-final-scale) - 1) * var(--cover-ratio)
-  );
-  min-height: calc(
-    var(--cover-width) * var(--cover-final-scale) * var(--cover-ratio) + 40svh
-  );
+  min-height: calc(var(--cover-width) * var(--cover-ratio) + 40svh);
 }
 
 .cover {
@@ -58,7 +49,6 @@
   z-index: 1;
   width: var(--cover-width);
   margin-inline: auto;
-  transform-origin: top center;
   // Lets the headline size itself from the cover width (cqw).
   container-type: inline-size;
 }
@@ -67,6 +57,34 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+// Card details matching the article cards below, sized from the cover width so
+// they scale with it.
+.coverMeta {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 2.5cqw;
+  font-family: var(--font-family-mono);
+  font-size: 3.5cqw;
+  line-height: 1.4;
+}
+
+.coverDescription {
+  margin: 4cqw auto 0;
+  max-width: 80%;
+  font-family: var(--font-family-body);
+  font-size: 4.2cqw;
+  line-height: 1.4;
+  text-align: center;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 1ch;
+    margin: 0 auto 2cqw;
+    border-top: var(--rule-width) solid currentColor;
+  }
 }
 
 // Each line is sized so its width matches the design relative to the cover

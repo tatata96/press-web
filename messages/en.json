@@ -7,13 +7,9 @@
     "newsletter": "newsletter"
   },
   "HomeIntro": {
-    "coverLines": [
-      "GURBET,",
-      "ANKARA",
-      "VE ZAMANSIZ",
-      "BİR SESİN",
-      "PEŞİNDE"
-    ]
+    "coverLines": ["GURBET,", "ANKARA", "VE ZAMANSIZ", "BİR SESİN", "PEŞİNDE"],
+    "new": "New",
+    "coverDescription": "Dummy text. A short description of the cover story goes here, written over two or three lines."
   },
   "IssueGrid": {
     "label": "Stories",
@@ -56,10 +52,7 @@
   "AboutPage": {
     "title": "About",
     "hero": {
-      "tagline": [
-        "A magazine",
-        "by September"
-      ],
+      "tagline": ["A magazine", "by September"],
       "issue": "Issue 01",
       "description": "An earth-culture publication by September Company, based in Istanbul. Explore the framework of the first issue."
     },

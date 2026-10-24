@@ -32,10 +32,13 @@
   inset: 0 0 auto;
   transform: translateY(-100%);
   visibility: hidden;
-  transition: transform 300ms ease, visibility 300ms;
+  transition:
+    transform 300ms ease,
+    visibility 300ms;
 }
 
-:global(body:has([data-intro-active="true"][data-covered="true"])) .header[data-intro-route="true"] {
+:global(body:has([data-intro-active="true"][data-covered="true"]))
+  .header[data-intro-route="true"] {
   transform: translateY(0);
   visibility: visible;
 }

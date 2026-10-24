@@ -26,7 +26,10 @@ export default function HeaderScrollProgress() {
       target = next;
       const from = progress;
       const started = performance.now();
-      const duration = Math.max(1, ANIMATION_DURATION_MS * Math.abs(target - from));
+      const duration = Math.max(
+        1,
+        ANIMATION_DURATION_MS * Math.abs(target - from),
+      );
 
       const tick = (now: number) => {
         const elapsed = Math.min(1, (now - started) / duration);
@@ -61,7 +64,8 @@ export default function HeaderScrollProgress() {
     const onMotionChange = () => {
       if (frame) cancelAnimationFrame(frame);
       frame = 0;
-      progress = reducedMotion.matches || window.scrollY > TRIGGER_SCROLL_PX ? 1 : 0;
+      progress =
+        reducedMotion.matches || window.scrollY > TRIGGER_SCROLL_PX ? 1 : 0;
       target = progress;
       offset = 0;
       render();

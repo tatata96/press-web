@@ -13,12 +13,15 @@ export type GridArticle = {
 type IssueGridProps = {
   label: string;
   newLabel: string;
+  // Number of the first article; the cover above the grid is 01.
+  startNumber?: number;
   articles: readonly GridArticle[];
 };
 
 export default function IssueGrid({
   label,
   newLabel,
+  startNumber = 1,
   articles,
 }: IssueGridProps) {
   return (
@@ -29,7 +32,7 @@ export default function IssueGrid({
             <li key={src} className={styles.item}>
               <article className={styles.article}>
                 <p className={styles.meta}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{String(index + startNumber).padStart(2, "0")}</span>
                   <span>{newLabel}</span>
                 </p>
                 <Image
