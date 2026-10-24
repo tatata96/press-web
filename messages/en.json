@@ -6,6 +6,11 @@
     "shop": "shop",
     "newsletter": "newsletter"
   },
+  "Footer": {
+    "credit": "A magazine by September",
+    "contact": "Contact",
+    "location": "Istanbul / Worldwide"
+  },
   "LanguageSwitcher": {
     "label": "Language"
   },

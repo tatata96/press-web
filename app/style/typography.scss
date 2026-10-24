@@ -87,3 +87,12 @@ body {
   line-height: var(--type-caption-line-height);
   letter-spacing: var(--type-caption-letter-spacing);
 }
+
+// Footer text, matching the design's small UI face.
+.type-footer {
+  font-family: var(--font-family-ui);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: 0;
+}

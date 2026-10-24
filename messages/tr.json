@@ -6,6 +6,11 @@
     "shop": "mağaza",
     "newsletter": "bülten"
   },
+  "Footer": {
+    "credit": "September'dan bir dergi",
+    "contact": "İletişim",
+    "location": "İstanbul / Dünya geneli"
+  },
   "LanguageSwitcher": {
     "label": "Dil"
   },

@@ -8,6 +8,7 @@ import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { IssueLayoutProvider } from "../components/issue-scroller/IssueLayoutProvider";
 import Header from "../components/header/Header";
+import SiteFooter from "../components/site-footer/SiteFooter";
 
 const pressed = localFont({
   src: [{ path: "../style/fonts/Pressed.otf", weight: "400", style: "normal" }],
@@ -93,6 +94,7 @@ export default async function RootLayout({
           <IssueLayoutProvider>
             <Header />
             {children}
+            <SiteFooter />
           </IssueLayoutProvider>
         </NextIntlClientProvider>
       </body>
