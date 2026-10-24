@@ -1,28 +1,115 @@
-// Follows the About page: stacked sections separated by a rule on mobile;
-// on desktop each section is a two-column spread, with the big Register
-// heading on the left and copy (then the form) on the right.
-.main {
-  flex: 1;
-  width: 100%;
-  padding: 0 16px 64px;
-}
+// Centered signup between two looping image reels. On mobile the reels are
+// horizontal strips above and below the form; from 900px they become vertical
+// columns either side of it. Background stays the global white.
+$gap: 16px;
 
-.section {
+.main {
+  position: fixed;
+  inset: 0;
   display: grid;
-  gap: 24px;
-  padding: 32px 0 48px;
-  border-top: var(--rule-width) solid currentColor;
+  grid-template-rows: auto 1fr auto;
+  gap: 32px;
+  padding: 88px 0 32px; // top clears the header
+  overflow: hidden;
 
   @media (min-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 60px;
-    padding: 32px 0 80px;
-    align-items: start;
+    grid-template-rows: none;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 480px) minmax(0, 1fr);
+    gap: 0;
+    padding: 0;
+  }
+}
+
+// --- Reels ---------------------------------------------------------------
+
+.reel {
+  overflow: hidden;
+
+  @media (min-width: 900px) {
+    position: relative;
+    padding: 0 $gap;
+  }
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide-x 40s linear infinite;
+
+  @media (min-width: 900px) {
+    flex-direction: column;
+    position: absolute;
+    inset: 0 $gap auto;
+    width: auto;
+    animation-name: slide-y;
+    animation-duration: 60s;
   }
 
-  // The header's bottom rule already sits above the first section.
-  &:first-child {
-    border-top: 0;
+  &.reverse {
+    animation-direction: reverse;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.set {
+  display: flex;
+  gap: $gap;
+  // Trailing space equal to the gap keeps spacing even across the loop point.
+  padding-right: $gap;
+
+  @media (min-width: 900px) {
+    flex-direction: column;
+    padding-right: 0;
+    padding-bottom: $gap;
+  }
+}
+
+.image {
+  display: block;
+  height: 140px;
+  width: auto;
+
+  @media (min-width: 900px) {
+    height: auto;
+    width: 100%;
+  }
+}
+
+@keyframes slide-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-y {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+// --- Signup --------------------------------------------------------------
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  // Top padding clears the header so the content centers in the visible area.
+  padding: 0 16px;
+  text-align: center;
+
+  @media (min-width: 900px) {
+    padding: 88px 16px 0;
+  }
+
+  // Form fields and their labels read left-aligned.
+  form {
+    width: 100%;
+    text-align: left;
   }
 }
 
@@ -34,25 +121,20 @@
   line-height: 1;
 }
 
-.copy {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
+.lead,
+.body {
+  margin: 0;
   font-size: var(--type-body-size);
   line-height: var(--type-body-line-height);
+}
 
-  p {
-    margin: 0;
-  }
-
-  @media (min-width: 900px) {
-    font-size: clamp(18px, 1.6vw, 28px);
-  }
+.lead {
+  font-weight: 700;
 }
 
 // Small mono caption above the form, as used for labels on the About page.
 .signupTitle {
-  margin: 0;
+  margin: 12px 0 0;
   font-family: var(--font-family-mono);
   font-size: var(--type-label-size);
   font-weight: var(--font-weight-light);

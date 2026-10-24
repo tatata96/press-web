@@ -1,0 +1,97 @@
+// One fixed screen: heading and form centered on white, with images sliding
+// across at different depths. Back images pass behind the content, front ones
+// in front of it; none can be clicked, so the form always stays usable.
+.main {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.images {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  // Lets the keyframes travel the stage's own height (cqh).
+  container-type: size;
+}
+
+// Each image sits in its own column at a fixed spot (`--start`, in % of the
+// height) and, with motion allowed, loops top to bottom. Negative delays spread them out on load.
+.image {
+  position: absolute;
+  left: var(--left);
+  top: calc(var(--start) * 1%);
+  width: calc(var(--width) * 2vw);
+  height: auto;
+
+  @media (min-width: 900px) {
+    width: calc(var(--width) * 1vw);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    top: 0;
+    animation: slide var(--duration) var(--delay) linear infinite;
+
+    &.reverse {
+      animation-direction: reverse;
+    }
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100cqh);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  padding: 96px 16px 32px; // clears the header
+  text-align: center;
+  pointer-events: none;
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(48px, 9vw, 120px);
+  line-height: 1;
+}
+
+// Opaque, so images passing behind never reduce the form's legibility.
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  background: var(--background);
+  border: 1px solid var(--foreground);
+  pointer-events: auto;
+
+  form {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.lead {
+  margin: 0;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  font-weight: 700;
+}
