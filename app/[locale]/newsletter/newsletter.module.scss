@@ -1,5 +1,5 @@
 // Follows the About page: stacked sections separated by a rule on mobile;
-// on desktop each section is a two-column spread, with the big title-font
+// on desktop each section is a two-column spread, with the big Register
 // heading on the left and copy (then the form) on the right.
 .main {
   flex: 1;
@@ -28,7 +28,7 @@
 
 .heading {
   margin: 0;
-  font-family: var(--font-family-title);
+  font-family: var(--font-family-body);
   font-weight: var(--font-weight-regular);
   font-size: clamp(48px, 12vw, 96px);
   line-height: 1;
