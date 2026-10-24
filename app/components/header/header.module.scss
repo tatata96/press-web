@@ -106,3 +106,9 @@
   outline: 2px solid currentColor;
   outline-offset: 4px;
 }
+
+// Hidden (not removed) so the header layout does not shift; set by pages that
+// show their own large wordmark.
+.header[data-hide-logo="true"] .logo {
+  visibility: hidden;
+}

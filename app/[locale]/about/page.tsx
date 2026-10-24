@@ -46,79 +46,78 @@ export default async function AboutPage({
           <div className={styles.copy}>
             <p>{t.rich("what.body", { b: bold })}</p>
           </div>
+          <div className={`${styles.section} ${styles.pair} ${styles.nested}`}>
+            <div className={styles.pairItem}>
+              <h2 className={styles.heading}>{t("where.heading")}</h2>
+              <div className={styles.copy}>
+                {toStrings(t.raw("where.paragraphs")).map((text) => (
+                  <p key={text}>{text}</p>
+                ))}
+              </div>
+            </div>
+            <div className={styles.pairItem}>
+              <h2 className={styles.heading}>{t("when.heading")}</h2>
+              <div className={styles.copy}>
+                <p>{t("when.body")}</p>
+              </div>
+            </div>
+          </div>
         </section>
+      </AboutStage>
 
-        <section className={`${styles.section} ${styles.pair}`}>
-          <div className={styles.pairItem}>
-            <h2 className={styles.heading}>{t("where.heading")}</h2>
-            <div className={styles.copy}>
-              {toStrings(t.raw("where.paragraphs")).map((text) => (
-                <p key={text}>{text}</p>
-              ))}
-            </div>
+      <section className={styles.section} aria-labelledby="how-heading">
+        <div className={styles.column}>
+          <h2 id="how-heading" className={styles.heading}>
+            {t("how.heading")}
+          </h2>
+          <div className={styles.copy}>
+            <p>
+              <strong>{t("how.lead")}</strong>
+            </p>
+            <p>{t("how.body")}</p>
           </div>
-          <div className={styles.pairItem}>
-            <h2 className={styles.heading}>{t("when.heading")}</h2>
-            <div className={styles.copy}>
-              <p>{t("when.body")}</p>
-            </div>
-          </div>
-        </section>
+        </div>
+        <div className={`${styles.copy} ${styles.notes}`}>
+          {toStrings(t.raw("how.notes")).map((text) => (
+            <p key={text}>{text}</p>
+          ))}
+        </div>
+      </section>
 
-        <section className={styles.section} aria-labelledby="how-heading">
-          <div className={styles.column}>
-            <h2 id="how-heading" className={styles.heading}>
-              {t("how.heading")}
-            </h2>
-            <div className={styles.copy}>
-              <p>
-                <strong>{t("how.lead")}</strong>
-              </p>
-              <p>{t("how.body")}</p>
-            </div>
+      <section className={styles.section} aria-labelledby="why-heading">
+        <div className={styles.column}>
+          <h2 id="why-heading" className={styles.heading}>
+            {t("why.heading")}
+          </h2>
+          <div className={styles.copy}>
+            <p>
+              <strong>{t("why.lead")}</strong>
+            </p>
+            <p>{t("why.body")}</p>
           </div>
-          <div className={`${styles.copy} ${styles.notes}`}>
-            {toStrings(t.raw("how.notes")).map((text) => (
+        </div>
+      </section>
+
+      <section className={styles.section} aria-labelledby="who-heading">
+        <div className={styles.column}>
+          <h2 id="who-heading" className={styles.heading}>
+            {t("who.heading")}
+          </h2>
+          <div className={styles.copy}>
+            {toStrings(t.raw("who.paragraphs")).map((text) => (
               <p key={text}>{text}</p>
             ))}
           </div>
-        </section>
-
-        <section className={styles.section} aria-labelledby="why-heading">
-          <div className={styles.column}>
-            <h2 id="why-heading" className={styles.heading}>
-              {t("why.heading")}
-            </h2>
-            <div className={styles.copy}>
-              <p>
-                <strong>{t("why.lead")}</strong>
-              </p>
-              <p>{t("why.body")}</p>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.section} aria-labelledby="who-heading">
-          <div className={styles.column}>
-            <h2 id="who-heading" className={styles.heading}>
-              {t("who.heading")}
-            </h2>
-            <div className={styles.copy}>
-              {toStrings(t.raw("who.paragraphs")).map((text) => (
-                <p key={text}>{text}</p>
-              ))}
-            </div>
-          </div>
-          <ul className={styles.team} aria-label={t("who.teamLabel")}>
-            {team.map(({ name, roleKey }) => (
-              <li key={roleKey} className={styles.member}>
-                <span className={styles.mono}>{name}</span>
-                <span>{t(`who.roles.${roleKey}`)}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </AboutStage>
+        </div>
+        <ul className={styles.team} aria-label={t("who.teamLabel")}>
+          {team.map(({ name, roleKey }) => (
+            <li key={roleKey} className={styles.member}>
+              <span className={styles.mono}>{name}</span>
+              <span>{t(`who.roles.${roleKey}`)}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }
