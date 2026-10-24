@@ -8,20 +8,31 @@ import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { IssueLayoutProvider } from "../components/issue-scroller/IssueLayoutProvider";
 import Header from "../components/header/Header";
+import SiteFooter from "../components/site-footer/SiteFooter";
 
 const pressed = localFont({
-  src: [
-    { path: "../style/fonts/Pressed.otf", weight: "400", style: "normal" },
-  ],
+  src: [{ path: "../style/fonts/Pressed.otf", weight: "400", style: "normal" }],
   variable: "--font-pressed",
 });
 
 const register = localFont({
   src: [
     { path: "../style/fonts/Register.otf", weight: "400", style: "normal" },
-    { path: "../style/fonts/Register-Italic.otf", weight: "400", style: "italic" },
-    { path: "../style/fonts/Register-Bold.otf", weight: "700", style: "normal" },
-    { path: "../style/fonts/Register-BoldItalic.otf", weight: "700", style: "italic" },
+    {
+      path: "../style/fonts/Register-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../style/fonts/Register-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../style/fonts/Register-BoldItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
   ],
   variable: "--font-register",
 });
@@ -29,13 +40,32 @@ const register = localFont({
 const crit = localFont({
   src: [
     { path: "../style/fonts/Crit-Light.otf", weight: "300", style: "normal" },
-    { path: "../style/fonts/Crit-Light-Italic.otf", weight: "300", style: "italic" },
+    {
+      path: "../style/fonts/Crit-Light-Italic.otf",
+      weight: "300",
+      style: "italic",
+    },
     { path: "../style/fonts/Crit-Regular.otf", weight: "400", style: "normal" },
     { path: "../style/fonts/Crit-Italic.otf", weight: "400", style: "italic" },
     { path: "../style/fonts/Crit-Medium.otf", weight: "500", style: "normal" },
-    { path: "../style/fonts/Crit-Medium-Italic.otf", weight: "500", style: "italic" },
+    {
+      path: "../style/fonts/Crit-Medium-Italic.otf",
+      weight: "500",
+      style: "italic",
+    },
   ],
   variable: "--font-crit",
+});
+
+const critMono = localFont({
+  src: [
+    {
+      path: "../style/fonts/CritMono-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-crit-mono",
 });
 
 export const metadata: Metadata = {
@@ -57,13 +87,14 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${pressed.variable} ${register.variable} ${crit.variable}`}
+      className={`${pressed.variable} ${register.variable} ${crit.variable} ${critMono.variable}`}
     >
       <body>
         <NextIntlClientProvider>
           <IssueLayoutProvider>
             <Header />
             {children}
+            <SiteFooter />
           </IssueLayoutProvider>
         </NextIntlClientProvider>
       </body>

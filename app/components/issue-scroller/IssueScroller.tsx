@@ -66,14 +66,23 @@ export default function IssueScroller({ label, spreads }: IssueScrollerProps) {
       // out its trailing inline padding, so the last spread would stop flush
       // against the viewport edge instead of centred like the first.
       const getDistance = () => list.scrollWidth - list.clientWidth;
+      // Hold the first spread still while the intro clears the header, then
+      // allow another 240px of scrolling for the header reveal to settle.
+      const getLeadIn = () =>
+        (header?.getBoundingClientRect().height ?? 0) + 240;
       gsap.to(list, {
         x: () => -getDistance(),
-        ease: "none",
+        ease: (progress: number) => {
+          const distance = getDistance();
+          if (distance <= 0) return 0;
+          const leadIn = getLeadIn();
+          return Math.max(0, (progress * (distance + leadIn) - leadIn) / distance);
+        },
         scrollTrigger: {
           trigger: scroller,
           // Pin below the sticky header instead of underneath it.
           start: () => `top ${header?.getBoundingClientRect().height ?? 0}px`,
-          end: () => `+=${getDistance()}`,
+          end: () => `+=${getDistance() + getLeadIn()}`,
           pin: true,
           scrub: true,
           invalidateOnRefresh: true,

@@ -1,0 +1,158 @@
+// Mobile: sections stack and are separated by a rule. Desktop: each section
+// is a two-column spread, heading on the left, copy on the right.
+.main {
+  flex: 1;
+  width: 100%;
+  padding: 0 16px 64px;
+}
+
+.section {
+  display: grid;
+  gap: 24px;
+  padding: 32px 0 48px;
+  border-top: var(--rule-width) solid currentColor;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 60px;
+    padding: 32px 0 80px;
+  }
+}
+
+.hero {
+  align-content: start;
+  // Lets the wordmark size itself from the width of the hero (cqw units).
+  container-type: inline-size;
+  // The header's bottom rule already sits above this section.
+  border-top: 0;
+
+  @media (min-width: 900px) {
+    // The wordmark column starts a third of the way in, as in the design.
+    grid-template-columns: 31fr 69fr;
+    column-gap: 0;
+    row-gap: 0;
+  }
+}
+
+.mono {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.block {
+  display: block;
+}
+
+.logo {
+  margin: 0;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-regular);
+  // Pressed sets "Press" about 2.2em wide, so this fills the container.
+  font-size: 44cqw;
+  line-height: 0.8;
+
+  @media (min-width: 900px) {
+    font-size: 31cqw;
+    // Space between the wordmark and the rule below it.
+    padding-bottom: 6cqw;
+  }
+}
+
+.heroTagline,
+.heroIssue,
+.heroText {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+}
+
+.heroTagline,
+.heroText {
+  font-size: clamp(18px, 2.2vw, 44px);
+  line-height: 1.5;
+}
+
+// The issue label and description sit below a rule that spans both columns.
+.heroIssue {
+  padding-top: 24px;
+  border-top: var(--rule-width) solid currentColor;
+}
+
+.heroIssue {
+  font-size: clamp(14px, 1.7vw, 34px);
+}
+
+.heroText {
+  text-transform: none;
+
+  @media (min-width: 900px) {
+    padding-top: 24px;
+    border-top: var(--rule-width) solid currentColor;
+  }
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(64px, 20vw, 160px);
+  line-height: 0.95;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    font-size: clamp(18px, 1.6vw, 28px);
+  }
+}
+
+// The secondary column in "How?" is set smaller than the lead copy.
+.notes {
+  @media (min-width: 900px) {
+    font-size: var(--type-body-size);
+  }
+}
+
+// "Where?" and "When?" share one spread.
+.pair {
+  @media (min-width: 900px) {
+    align-items: start;
+  }
+}
+
+.pairItem {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.team {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-top: var(--rule-width) solid currentColor;
+}

@@ -12,7 +12,7 @@
   align-items: center;
   column-gap: 16px;
   padding: 12px 16px;
-  border-bottom: 1px solid currentColor;
+  border-bottom: var(--rule-width) solid currentColor;
 
   // On narrow screens the three items do not fit on one line, so the logo
   // takes its own row and language and nav share the one below.
@@ -23,6 +23,26 @@
       "language details";
     row-gap: 8px;
     justify-items: center;
+  }
+}
+
+// Scope the opening to the active route: cached pages remain in the DOM.
+.header[data-intro-route="true"] {
+  position: fixed;
+  inset: 0 0 auto;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 300ms ease, visibility 300ms;
+}
+
+:global(body:has([data-intro-active="true"][data-covered="true"])) .header[data-intro-route="true"] {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header[data-intro-route="true"] {
+    transition: none;
   }
 }
 
@@ -45,7 +65,9 @@
 }
 
 .logo {
+  --type-display-size: 56px;
   grid-area: logo;
+  text-transform: uppercase;
   color: inherit;
   text-decoration: none;
 }
@@ -58,12 +80,12 @@
   list-style: none;
 }
 
-// Nav items use the title face, matching the design.
+// Nav items use the Crit UI face, matching the design.
 .link {
-  font-family: var(--font-family-title);
+  font-family: var(--font-family-ui);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0;
-  text-transform: lowercase;
+  text-transform: capitalize;
   color: inherit;
   text-decoration: none;
 

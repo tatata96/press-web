@@ -1,6 +1,9 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
+  --border-subtle: #a6a6a6;
+  // Hairline used for divider rules.
+  --rule-width: 0.5px;
 }
 
 * {

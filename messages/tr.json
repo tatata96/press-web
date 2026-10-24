@@ -3,7 +3,13 @@
     "navLabel": "Ana menü",
     "about": "hakkında",
     "magazine": "dergi",
-    "shop": "mağaza"
+    "shop": "mağaza",
+    "newsletter": "bülten"
+  },
+  "Footer": {
+    "credit": "September'dan bir dergi",
+    "contact": "İletişim",
+    "location": "İstanbul / Dünya geneli"
   },
   "LanguageSwitcher": {
     "label": "Dil"
@@ -17,7 +23,31 @@
     "horizontal": "Yatay",
     "vertical": "Dikey"
   },
-  "AboutPage": { "title": "Hakkında" },
-  "MagazinePage": { "title": "Dergi" },
-  "ShopPage": { "title": "Mağaza" }
+  "AboutPage": {
+    "title": "Hakkında"
+  },
+  "MagazinePage": {
+    "title": "Dergi"
+  },
+  "ShopPage": {
+    "title": "Mağaza"
+  },
+  "NewsletterPage": {
+    "heading": "Mektup",
+    "lead": "Sayılar arasında haberdar kal.",
+    "body": "Özenle seçilmiş içerikler, haftalık bültenimizle gelen kutunda.",
+    "signupTitle": "Bültenimize kaydol"
+  },
+  "NewsletterForm": {
+    "emailLabel": "E-posta",
+    "emailRequired": "E-posta adresini gir.",
+    "emailInvalid": "Geçerli bir e-posta adresi gir, örneğin ad@ornek.com.",
+    "ageLabel": "Yaş",
+    "ageHelper": "İsteğe bağlı.",
+    "ageInvalid": "Yaşını sıfırdan büyük bir tam sayı olarak gir.",
+    "submit": "Kaydol",
+    "notAvailable": "Kayıt henüz kullanılamıyor. Bilgilerin kaydedilmedi.",
+    "nameLabel": "Ad",
+    "surnameLabel": "Soyad"
+  }
 }

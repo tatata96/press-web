@@ -1,0 +1,61 @@
+// Follows the About page: stacked sections separated by a rule on mobile;
+// on desktop each section is a two-column spread, with the big Register
+// heading on the left and copy (then the form) on the right.
+.main {
+  flex: 1;
+  width: 100%;
+  padding: 0 16px 64px;
+}
+
+.section {
+  display: grid;
+  gap: 24px;
+  padding: 32px 0 48px;
+  border-top: var(--rule-width) solid currentColor;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 60px;
+    padding: 32px 0 80px;
+    align-items: start;
+  }
+
+  // The header's bottom rule already sits above the first section.
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(48px, 12vw, 96px);
+  line-height: 1;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    font-size: clamp(18px, 1.6vw, 28px);
+  }
+}
+
+// Small mono caption above the form, as used for labels on the About page.
+.signupTitle {
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-light);
+  line-height: 1.4;
+  text-transform: uppercase;
+}

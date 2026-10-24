@@ -16,7 +16,7 @@ Treat package.json and the lockfile as the source of truth for installed depende
 
 ## Architecture
 
-- Keep route files and layouts in src/app; keep page components focused on composition.
+- Keep route files and layouts in the root-level app/ directory; keep page components focused on composition.
 - Colocate feature-specific components, hooks, types, and integration logic. Share code only when it has a real shared use.
 - Separate presentation, business logic, and external service calls.
 - Prefer Server Components. Add client boundaries only where browser APIs, state, effects, or event handlers are required.

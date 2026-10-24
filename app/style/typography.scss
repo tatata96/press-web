@@ -2,6 +2,7 @@
   --font-family-title: var(--font-pressed), serif;
   --font-family-body: var(--font-register), serif;
   --font-family-ui: var(--font-crit), sans-serif;
+  --font-family-mono: var(--font-crit-mono), monospace;
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -85,4 +86,13 @@ body {
   font-weight: var(--font-weight-regular);
   line-height: var(--type-caption-line-height);
   letter-spacing: var(--type-caption-letter-spacing);
+}
+
+// Footer text, matching the design's small UI face.
+.type-footer {
+  font-family: var(--font-family-ui);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: 0;
 }

@@ -3,7 +3,13 @@
     "navLabel": "Main",
     "about": "about",
     "magazine": "magazine",
-    "shop": "shop"
+    "shop": "shop",
+    "newsletter": "newsletter"
+  },
+  "Footer": {
+    "credit": "A magazine by September",
+    "contact": "Contact",
+    "location": "Istanbul / Worldwide"
   },
   "LanguageSwitcher": {
     "label": "Language"
@@ -17,7 +23,84 @@
     "horizontal": "Horizontal",
     "vertical": "Vertical"
   },
-  "AboutPage": { "title": "About" },
-  "MagazinePage": { "title": "Magazine" },
-  "ShopPage": { "title": "Shop" }
+  "AboutPage": {
+    "title": "About",
+    "hero": {
+      "tagline": ["A magazine", "by September"],
+      "issue": "Issue 01",
+      "description": "An earth-culture publication by September Company, based in Istanbul. Explore the framework of the first issue."
+    },
+    "what": {
+      "heading": "What?",
+      "body": "<b>Press</b> was founded with the ambition of becoming a global cultural platform based in Istanbul, aimed at being a publication of earth-culture. Between East and West; between past and future, local and global, light and shadow. It is a magazine that aims to be the spirit of the time, holding a mirror to the moments and details of the transition between the traditional and the radical."
+    },
+    "where": {
+      "heading": "Where?",
+      "paragraphs": [
+        "Physically in Istanbul, and wherever we are. In terms of content, all around the world…",
+        "Beyond digital platforms, it is available in print in Istanbul, Paris, Milan, London, Berlin, and New York."
+      ]
+    },
+    "when": {
+      "heading": "When?",
+      "body": "The first issue arrives in November 2026. On shelves twice a year. Its carefully curated selections will reach subscribers via weekly newsletters, while daily content will be published on Instagram."
+    },
+    "how": {
+      "heading": "How?",
+      "lead": "As it should be; effortless, natural, intellectual.",
+      "body": "To create a cultural memory, we have planned an entity that brings together the local and the global across fields such as fashion, art, sports, music, cinema, literature, and architecture, prioritizing aesthetic concerns and shaping itself as an artistic object. In this sense, Press is a construction of character, a way of thinking.",
+      "notes": [
+        "We bring the light of the Mediterranean, the layered intelligence of Istanbul, and the aesthetic language of the contemporary world onto the same page.",
+        "Press is a publication that interprets trends rather than just recording them. Without excluding popular culture, it seeks to understand it without surrendering to it, leaving notes for the future.",
+        "It places art at its center without becoming sterile. It is intellectual, yet neither inaccessible nor boring.",
+        "It is an aesthetic ecosystem for advertisers.",
+        "It is also a sterile platform for creators. Because this space is free. It is a foundation for production and a new window for photographers, stylists, writers, and artists. We want to be a medium that takes risks, establishes a new language, creates references, and meets on the same page with like-minded people.",
+        "For readers: This magazine is not a guide; it is a companion. It does not tell you what to wear; it helps you decide how to think."
+      ]
+    },
+    "why": {
+      "heading": "Why?",
+      "lead": "Because why not?",
+      "body": "To offer the qualified spaces we need for a higher quality of life, and to make inspiring stories more visible and permanent—both for those who create them and those who read them."
+    },
+    "who": {
+      "heading": "Who?",
+      "paragraphs": [
+        "We are people who have worked at every level of the publishing industry in Turkey for 25 years, produced publications, developed content, and loved this profession.",
+        "We are crowning the fashion and image agency activities we conduct under September Company with Press."
+      ],
+      "teamLabel": "Team",
+      "roles": {
+        "ensarAltun": "Founder, Creative Director",
+        "silaGuven": "Content & Editorial Director",
+        "utkuPalamutcu": "General Coordinator, Fashion Director",
+        "dogukanKarapinar": "Design Director",
+        "elifSelinUnuvar": "Brand & Project Director"
+      }
+    }
+  },
+  "MagazinePage": {
+    "title": "Magazine"
+  },
+  "ShopPage": {
+    "title": "Shop"
+  },
+  "NewsletterPage": {
+    "heading": "Letters",
+    "lead": "Stay in the loop between issues.",
+    "body": "Carefully curated selections, sent to your inbox in our weekly newsletter.",
+    "signupTitle": "Sign up to our newsletter"
+  },
+  "NewsletterForm": {
+    "emailLabel": "Email",
+    "emailRequired": "Enter your email address.",
+    "emailInvalid": "Enter a valid email address, like name@example.com.",
+    "ageLabel": "Age",
+    "ageHelper": "Optional.",
+    "ageInvalid": "Enter your age as a whole number greater than zero.",
+    "submit": "Sign up",
+    "notAvailable": "Registration is not available yet. Your details have not been saved.",
+    "nameLabel": "Name",
+    "surnameLabel": "Surname"
+  }
 }
