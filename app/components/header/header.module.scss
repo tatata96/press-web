@@ -11,8 +11,14 @@
   grid-template-areas: "language logo details";
   align-items: center;
   column-gap: 16px;
-  padding: 12px 16px;
+  // Side padding matches where the issue grid's content starts (grid padding
+  // plus card padding): 20px, then 32px from tablet up.
+  padding: 12px 20px;
   border-bottom: var(--rule-width) solid currentColor;
+
+  @media (min-width: 768px) {
+    padding-inline: 32px;
+  }
 
   // On narrow screens the three items do not fit on one line, so the logo
   // takes its own row and language and nav share the one below.
