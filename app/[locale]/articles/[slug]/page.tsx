@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { LockedTeaser } from "../../../components/locked-teaser/LockedTeaser";
 import { homeStories } from "../../../components/issue-grid/stories";
 import styles from "./article.module.scss";
 
@@ -57,6 +58,7 @@ export default async function ArticlePage({
           ))}
         </div>
       </article>
+      <LockedTeaser />
       <Link href="/" className={styles.back}>
         ← {t("back")}
       </Link>

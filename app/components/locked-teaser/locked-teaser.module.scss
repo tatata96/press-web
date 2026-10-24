@@ -1,0 +1,45 @@
+// Locked "read more" teaser pointing readers to the full magazine. Not
+// interactive until purchasing exists.
+.teaser {
+  display: grid;
+  gap: 16px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: var(--rule-width) solid currentColor;
+}
+
+.label,
+.note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--type-caption-size);
+  text-transform: uppercase;
+}
+
+.lock {
+  flex: none;
+}
+
+.block {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: not-allowed;
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 8px;
+  }
+}
+
+.title {
+  font-family: var(--font-family-title);
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+}

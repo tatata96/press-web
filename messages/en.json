@@ -143,6 +143,10 @@
     ],
     "closing": [
       "Dummy text. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus."
-    ]
+    ],
+    "readMore": "More like this",
+    "lockedTitle": "For the endlessly curious.",
+    "locked": "Locked",
+    "lockedNote": "Discover more with full access."
   }
 }

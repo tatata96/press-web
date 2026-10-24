@@ -1,12 +1,14 @@
 .footer {
   --wordmark-size: clamp(96px, 28vw, 360px);
+  --top-gap: 48px;
   // Pushes the footer to the bottom when the page content is short.
   margin-top: auto;
   position: relative;
-  // Clips the fixed wordmark to the footer's own box.
-  clip-path: inset(0);
+  // Clips the fixed wordmark to the footer's own box, starting at the rule so
+  // the gap above it stays plain page background.
+  clip-path: inset(var(--top-gap) 0 0);
   // Room for the wordmark below the columns.
-  padding: 48px 16px calc(var(--wordmark-size) * 0.8 + 32px);
+  padding: var(--top-gap) 16px calc(var(--wordmark-size) * 0.8 + 32px);
   background: var(--background);
 }
 
