@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import IssueGrid from "../components/issue-grid/IssueGrid";
+import HomeIntro from "../components/home-intro/HomeIntro";
 import { issueOneSpreads } from "../components/issue-scroller/spreads";
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
@@ -17,7 +18,9 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
 
   return (
     <main>
-      <IssueGrid label={tScroller("label")} spreads={spreads} />
+      <HomeIntro>
+        <IssueGrid label={tScroller("label")} spreads={spreads} />
+      </HomeIntro>
     </main>
   );
 }

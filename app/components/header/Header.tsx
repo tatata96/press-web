@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import IssueLayoutSwitcher from "../issue-scroller/IssueLayoutSwitcher";
 import LanguageSwitcher from "../language-switcher/LanguageSwitcher";
+import HeaderFrame from "./HeaderFrame";
 import styles from "./header.module.scss";
 
 // Search and bag are in the design but belong to later commerce work.
@@ -16,7 +17,7 @@ export default async function Header() {
   const t = await getTranslations("Header");
 
   return (
-    <header className={styles.header}>
+    <HeaderFrame>
       <div className={styles.language}>
         <LanguageSwitcher />
         <div className={styles.layout}>
@@ -37,6 +38,6 @@ export default async function Header() {
           ))}
         </ul>
       </nav>
-    </header>
+    </HeaderFrame>
   );
 }

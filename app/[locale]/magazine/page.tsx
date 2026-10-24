@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import IssueScroller from "../../components/issue-scroller/IssueScroller";
+import HomeIntro from "../../components/home-intro/HomeIntro";
 import { issueOneSpreads } from "../../components/issue-scroller/spreads";
 
 export default async function MagazinePage({
@@ -19,7 +20,9 @@ export default async function MagazinePage({
 
   return (
     <main>
-      <IssueScroller label={tScroller("label")} spreads={spreads} />
+      <HomeIntro>
+        <IssueScroller label={tScroller("label")} spreads={spreads} />
+      </HomeIntro>
     </main>
   );
 }

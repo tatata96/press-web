@@ -26,6 +26,26 @@
   }
 }
 
+// Scope the opening to the active route: cached pages remain in the DOM.
+.header[data-intro-route="true"] {
+  position: fixed;
+  inset: 0 0 auto;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 300ms ease, visibility 300ms;
+}
+
+:global(body:has([data-intro-active="true"][data-covered="true"])) .header[data-intro-route="true"] {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header[data-intro-route="true"] {
+    transition: none;
+  }
+}
+
 .language {
   grid-area: language;
   justify-self: stretch;
@@ -47,6 +67,7 @@
 .logo {
   --type-display-size: 56px;
   grid-area: logo;
+  text-transform: uppercase;
   color: inherit;
   text-decoration: none;
 }

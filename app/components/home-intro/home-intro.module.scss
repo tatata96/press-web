@@ -1,0 +1,40 @@
+.home {
+  --opening-height: clamp(260px, 38vw, 70svh);
+  isolation: isolate;
+}
+
+.opening {
+  height: var(--opening-height);
+}
+
+.masthead {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: var(--opening-height);
+  margin: 0;
+  padding-top: 20px;
+  pointer-events: none;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    font-family: var(--font-family-title);
+    font-size: 380px;
+    font-weight: 400;
+  }
+}
+
+.edge {
+  height: 1px;
+  margin-top: -1px;
+}
+
+.content {
+  position: relative;
+  background: var(--background);
+  border-top: var(--rule-width) solid currentColor;
+  min-height: 100svh;
+}
