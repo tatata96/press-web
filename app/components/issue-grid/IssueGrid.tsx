@@ -1,31 +1,51 @@
 import Image from "next/image";
-import type { Spread } from "../issue-scroller/spreads";
 import styles from "./issue-grid.module.scss";
+
+export type GridArticle = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  title: string;
+  description: string;
+};
 
 type IssueGridProps = {
   label: string;
-  spreads: readonly (Spread & { alt: string })[];
+  newLabel: string;
+  articles: readonly GridArticle[];
 };
 
-// The first spread is the cover story, centred on its own row at the same
-// size as the rest, which sit two per row.
-export default function IssueGrid({ label, spreads }: IssueGridProps) {
+export default function IssueGrid({
+  label,
+  newLabel,
+  articles,
+}: IssueGridProps) {
   return (
     <section aria-label={label}>
       <ol className={styles.grid}>
-        {spreads.map(({ src, width, height, alt }, index) => (
-          <li key={src} className={styles.spread}>
-            <Image
-              src={src}
-              width={width}
-              height={height}
-              alt={alt}
-              sizes="(min-width: 768px) 50vw, 100vw"
-              priority={index === 0}
-              className={styles.image}
-            />
-          </li>
-        ))}
+        {articles.map(
+          ({ src, width, height, alt, title, description }, index) => (
+            <li key={src} className={styles.item}>
+              <article className={styles.article}>
+                <p className={styles.meta}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{newLabel}</span>
+                </p>
+                <Image
+                  src={src}
+                  width={width}
+                  height={height}
+                  alt={alt}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className={styles.image}
+                />
+                <h2 className={styles.title}>{title}</h2>
+                <p className={styles.description}>{description}</p>
+              </article>
+            </li>
+          ),
+        )}
       </ol>
     </section>
   );

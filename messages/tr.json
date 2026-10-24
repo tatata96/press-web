@@ -6,6 +6,36 @@
     "shop": "mağaza",
     "newsletter": "bülten"
   },
+  "HomeIntro": {
+    "coverLines": [
+      "GURBET,",
+      "ANKARA",
+      "VE ZAMANSIZ",
+      "BİR SESİN",
+      "PEŞİNDE"
+    ]
+  },
+  "IssueGrid": {
+    "label": "Hikâyeler",
+    "new": "Yeni",
+    "stories": {
+      "musicBand": {
+        "title": "Örnek makale başlığı bir",
+        "description": "Örnek metin. Makalenin kısa açıklaması burada, iki ya da üç satır olarak yer alır.",
+        "alt": "Fayans kaplı bir banyoda poz veren beş kişi"
+      },
+      "artGunesTerkol": {
+        "title": "Örnek makale başlığı iki",
+        "description": "Örnek metin. Makalenin kısa açıklaması burada, iki ya da üç satır olarak yer alır.",
+        "alt": "Dağınık ve renkli bir atölyede oturan gülümseyen bir kadın"
+      },
+      "julianBarnes": {
+        "title": "Örnek makale başlığı üç",
+        "description": "Örnek metin. Makalenin kısa açıklaması burada, iki ya da üç satır olarak yer alır.",
+        "alt": "Yuvarlak gözlüklü yaşlı bir adamın sepya portresi"
+      }
+    }
+  },
   "Footer": {
     "credit": "September'dan bir dergi",
     "contact": "İletişim",

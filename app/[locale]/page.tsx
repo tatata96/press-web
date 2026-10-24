@@ -1,25 +1,24 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import IssueGrid from "../components/issue-grid/IssueGrid";
 import HomeIntro from "../components/home-intro/HomeIntro";
-import { issueOneSpreads } from "../components/issue-scroller/spreads";
+import { homeStories } from "../components/issue-grid/stories";
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const tScroller = await getTranslations("IssueScroller");
+  const t = await getTranslations("IssueGrid");
 
-  const spreads = issueOneSpreads.map((spread, index) => ({
-    ...spread,
-    alt: tScroller("spreadAlt", {
-      number: index + 1,
-      total: issueOneSpreads.length,
-    }),
+  const articles = homeStories.map(({ key, ...image }) => ({
+    ...image,
+    alt: t(`stories.${key}.alt`),
+    title: t(`stories.${key}.title`),
+    description: t(`stories.${key}.description`),
   }));
 
   return (
     <main>
       <HomeIntro>
-        <IssueGrid label={tScroller("label")} spreads={spreads} />
+        <IssueGrid label={t("label")} newLabel={t("new")} articles={articles} />
       </HomeIntro>
     </main>
   );

@@ -1,5 +1,12 @@
 .home {
   --opening-height: clamp(260px, 38vw, 70svh);
+  --cover-width: clamp(115px, 20.5vw, 294px);
+  // Final size is about 32% of the viewport width.
+  --cover-final-scale: 1.56;
+  // Cover height / width: the image (1.358) plus the headline below it.
+  --cover-ratio: 2.13;
+  // Header height plus a gap; pinned cover sits just below the header.
+  --cover-pin-top: 104px;
   isolation: isolate;
 }
 
@@ -15,6 +22,7 @@
   margin: 0;
   padding-top: 20px;
   pointer-events: none;
+  will-change: transform;
 
   svg {
     display: block;
@@ -27,14 +35,90 @@
   }
 }
 
+// The stage pulls the cover up over the lower part of the masthead. The cover
+// (above the masthead via z-index) pins just under the header while the stage
+// scrolls on, then is released above the content. The stage is tall enough for
+// the cover's final scaled size plus a short pause while pinned. The bottom
+// padding reserves the room the scaled cover grows into, so it never overlaps
+// the content below.
+.stage {
+  position: relative;
+  margin-top: calc(var(--opening-height) * -0.4);
+  padding-bottom: calc(
+    var(--cover-width) * (var(--cover-final-scale) - 1) * var(--cover-ratio)
+  );
+  min-height: calc(
+    var(--cover-width) * var(--cover-final-scale) * var(--cover-ratio) + 40svh
+  );
+}
+
+.cover {
+  position: sticky;
+  top: var(--cover-pin-top);
+  z-index: 1;
+  width: var(--cover-width);
+  margin-inline: auto;
+  transform-origin: top center;
+  // Lets the headline size itself from the cover width (cqw).
+  container-type: inline-size;
+}
+
+.coverImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// Each line is sized so its width matches the design relative to the cover
+// width (Pressed, uppercase); spacing between lines is tuned to the design's
+// baselines. Values are in cqw.
+.coverTitle {
+  margin: 5cqw 0 0;
+  font-family: var(--font-family-title);
+  font-weight: 400;
+  line-height: 0.8;
+  text-align: center;
+  white-space: nowrap;
+
+  span {
+    display: block;
+  }
+
+  span:nth-child(1) {
+    font-size: 33.6cqw;
+  }
+
+  span:nth-child(2) {
+    margin-top: 2.5cqw;
+    font-size: 21.1cqw;
+  }
+
+  span:nth-child(3) {
+    margin-top: 1.6cqw;
+    font-size: 10.3cqw;
+  }
+
+  span:nth-child(4) {
+    margin-top: 4.1cqw;
+    font-size: 7.5cqw;
+  }
+
+  span:nth-child(5) {
+    margin-top: 3cqw;
+    font-size: 4.1cqw;
+  }
+}
+
+// Zero-height marker placed where the stage top sits when the cover pins.
 .edge {
+  position: absolute;
+  top: calc(var(--cover-pin-top) * -1);
   height: 1px;
-  margin-top: -1px;
 }
 
 .content {
   position: relative;
-  background: var(--background);
-  border-top: var(--rule-width) solid currentColor;
+  // Breathing room below the cover headline.
+  margin-top: clamp(48px, 8vw, 120px);
   min-height: 100svh;
 }
