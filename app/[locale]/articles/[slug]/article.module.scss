@@ -1,0 +1,87 @@
+// Article detail: full-width photo, then title and description, then body
+// copy. The middle block of the body runs in two columns from tablet up.
+.main {
+  flex: 1;
+  width: 100%;
+  padding: 0 16px 64px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+  object-position: top;
+}
+
+.header {
+  display: grid;
+  gap: 16px;
+  padding: 24px 0 32px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 60px;
+    padding: 32px 0 48px;
+    align-items: start;
+  }
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-title);
+  font-size: clamp(40px, 8vw, 96px);
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+}
+
+.description {
+  margin: 0;
+  font-family: var(--font-family-ui);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+
+  @media (min-width: 900px) {
+    font-size: clamp(18px, 1.6vw, 28px);
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding-top: 32px;
+  border-top: var(--rule-width) solid currentColor;
+  font-family: var(--font-family-body);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    font-size: clamp(18px, 1.4vw, 24px);
+  }
+}
+
+// Full-width paragraphs sit in the same two-column grid as the header (50/50,
+// 60px gap); the columns block uses a grid so both columns start aligned.
+.columns {
+  display: grid;
+  gap: 1.5em;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 60px;
+  }
+}
+
+.back {
+  display: inline-block;
+  margin-top: 48px;
+  font-family: var(--font-family-mono);
+  font-size: var(--type-caption-size);
+  text-transform: uppercase;
+}

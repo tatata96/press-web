@@ -1,7 +1,9 @@
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 import styles from "./issue-grid.module.scss";
 
 export type GridArticle = {
+  slug: string;
   src: string;
   width: number;
   height: number;
@@ -28,7 +30,7 @@ export default function IssueGrid({
     <section aria-label={label}>
       <ol className={styles.grid}>
         {articles.map(
-          ({ src, width, height, alt, title, description }, index) => (
+          ({ slug, src, width, height, alt, title, description }, index) => (
             <li key={src} className={styles.item}>
               <article className={styles.article}>
                 <p className={styles.meta}>
@@ -43,7 +45,12 @@ export default function IssueGrid({
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className={styles.image}
                 />
-                <h2 className={styles.title}>{title}</h2>
+                <h2 className={styles.title}>
+                  {/* The link's ::after covers the whole card. */}
+                  <Link href={`/articles/${slug}`} className={styles.link}>
+                    {title}
+                  </Link>
+                </h2>
                 <p className={styles.description}>{description}</p>
               </article>
             </li>
