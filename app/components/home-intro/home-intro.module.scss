@@ -8,6 +8,20 @@
   isolation: isolate;
 }
 
+// Return visits: no masthead; the header is already in, so clear it.
+.skipOpening {
+  padding-top: var(--cover-pin-top);
+
+  .opening,
+  .masthead {
+    display: none;
+  }
+
+  .stage {
+    margin-top: 0;
+  }
+}
+
 .opening {
   height: var(--opening-height);
 }
